@@ -280,6 +280,13 @@ After pushing a new feature branch, **proactively ask** whether to open the PR w
 
 **Description must be all English** (same as §3.1.1): no other languages / full-width punctuation / `§` numbering anywhere (subject + body + tables + checklist).
 
+**Reviewers:** request exactly `@gloryfromca` (zhanghui) and `@0xKT` (huangjie) right after `gh pr create`, and remove any other reviewer GitHub requested on its own (CODEOWNERS adds one per touched path):
+
+```bash
+gh api -X POST repos/EverMind-AI/Raven/pulls/<N>/requested_reviewers -f 'reviewers[]=gloryfromca' -f 'reviewers[]=0xKT'
+gh api -X DELETE repos/EverMind-AI/Raven/pulls/<N>/requested_reviewers -f 'reviewers[]=<auto-requested login>'
+```
+
 **Description structure:** the sections come from `.github/pull_request_template.md` — read that file, do not work from a copy. `gh pr create` fills it in for you; writing `--body` by hand means reproducing its headings exactly.
 
 Filling rules:
